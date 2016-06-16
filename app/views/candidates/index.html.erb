@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+
+<%=link_to("LOG Out" , destroy_voter_session_path , :method => :delete) %>
+
 <h1>Listing Candidates</h1>
 
 <table>
   <thead>
-    <tr>
+   <!--  <tr>
       <th>Name</th>
       <th>Plan</th>
       <th>Loaction</th>
       <th colspan="3"></th>
-    </tr>
+    </tr> -->
   </thead>
 
   <tbody>
@@ -17,6 +20,8 @@
       <tr>
         <td><%= candidate.name %></td>
        
+          <td><%= Voter.where('candidate_id' => candidate.id).length %></td>
+
       
         <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
