@@ -3,11 +3,10 @@ class WelcomeController < ApplicationController
  	#@candidates = Candidate.all
  	if voter_signed_in? 
  		redirect_to candidates_path
+ 	else
+ 		redirect_to voter_session_path
  	end
   end
 
-  def vote
-  	current_voter.candidate_id =  params[:id]
-  	# redirect_to candidates_path
-  end
+
 end

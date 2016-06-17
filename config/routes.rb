@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :candidates do
+    resources :comments
     member do
       get 'vote'
     end
   end
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

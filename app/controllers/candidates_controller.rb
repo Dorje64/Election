@@ -1,22 +1,35 @@
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
+ #before_action :adminication , except: [:vote]
+
 
   # GET /candidates
   # GET /candidates.json
   def index
     @candidates = Candidate.all
+   # @count = Voter.where(candidate_id => @can)
+
+   @voter_all = Voter.all.count
+
+
   end
 
+              
   # GET /candidates/1
   # GET /candidates/1.json
   def show
+  @comment = Comment.new
+  @c = Comment.where('candidate_id' => @candidate.id)
   end
 
 
   def vote
     #byebug
+
+    if current_voter.candidate_id == nil
     current_voter.candidate_id =  params[:id]
     current_voter.save
+  end
      redirect_to candidates_path
   end
 

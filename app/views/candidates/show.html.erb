@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="jombotron container-fluid row">
+<div class="col-md-4">
 <p>
   <strong>Name:</strong>
   <%= @candidate.name %>
@@ -14,6 +16,53 @@
   <strong>Loaction:</strong>
   <%= @candidate.loaction %>
 </p>
+</div>
+<div class="col-md-8">
+
+ <% @c.each do |comment| %>
+
+    <li>
+      <div class="commentText">
+      <%- @email = Voter.find(comment.voter_id).email%>
+        <b><%= @email %></b>
+        <p class=""><%= comment.content %> </p> <span class="date sub-text"><%= time_ago_in_words(comment.created_at) %> ago</span>
+
+</div>
+</li>
+
+<%end%>
+
+
+<%= form_for([@candidate,@comment]) do |f| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="form-inline form-group field">
+
+        <%= f.text_area :content, :class=>"form-control fixed" ,cols: 80, rows:1,  :placeholder=>"Your comments" %>
+        <%= f.hidden_field :candidate_id ,value: @candidate.id %>
+
+        <%= f.hidden_field :voter_id, value: current_voter.id%>
+
+
+        <%= f.submit  :value=> "SAY IT" ,:class=>"form-control action btn btn-primary  "  %>
+      </div>
+<% end %>
+
+<button type="button" class="btn btn-success" style="float:right"> <%link_to 'Edit', edit_candidate_path(@candidate)%> </td> </button>
+</div>
+
+</div>
 
 <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
 <%= link_to 'Back', candidates_path %>
