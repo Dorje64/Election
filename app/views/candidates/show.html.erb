@@ -16,25 +16,36 @@
 
 <div class="jombotron container-fluid row">
 <div class="col-md-4">
-<p>
 
 
-<%=image_tag(@candidate.image.url , :class => "img_responsive img-circle" , :style=> "width:160px;")%>
-<p>
-<div class="glyphicon glyphicon-user"></div>
-  <strong >Name:</strong>
-  <%= @candidate.name %>
-</p>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-body">
 
-<p>
-  <strong>Plan:</strong>
+<%=image_tag(@candidate.image.url , :class => "img_responsive img-circle center-block" , :style=> "width:160px; height:160px; align-content:center")%>
+  
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">
+    <div class="glyphicon glyphicon-user"></div>
+        <strong >Name:</strong>
+          <%= @candidate.name %>
+        </li>
+    <li class="list-group-item">
+     <strong>Plan:</strong>
   <%= @candidate.plan %>
-</p>
-	
-<p>
-  <strong>Location:</strong>
-  <%= @candidate.loaction %>
-</p>
+
+  </li>
+    <li class="list-group-item">
+      
+      <strong>Location:</strong>
+        <%= @candidate.loaction %>
+    </li>
+  </ul>
+</div>
+
 </div>
 <div class="col-md-8">
 
@@ -53,7 +64,7 @@
     <% end %>
 
 
-    <div class="form-inline form-group field">
+    <div class="form-inline form-group field col-md-10">
 
         <%= f.text_area :content, :class=>"form-control fixed" ,cols: 90, rows:1,  :placeholder=>"Your comments" %>
         <%= f.hidden_field :candidate_id ,value: @candidate.id %>
@@ -96,7 +107,5 @@
 
 </div>
 
-
-<%= link_to 'Back', candidates_path %>
 <%#= link_to 'Edit', edit_candidate_path(@candidate) %> 
 
