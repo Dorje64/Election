@@ -2,7 +2,8 @@ class Candidate < ActiveRecord::Base
 	has_many :voters
 	has_many :comments
 
-	 max_paginates_per 100
+
+	max_paginates_per 100
 
 	has_attached_file :image
 	

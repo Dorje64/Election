@@ -6,17 +6,15 @@
    
 
         <%= current_voter.email %>
-        <button class= "btn btn-danger" style="float:right"> 
-        <%=link_to("LOG Out" , destroy_voter_session_path , :method => :delete) %>
-        </button>
+      
+        <%=link_to("LOG Out" , destroy_voter_session_path , :method => :delete , :class=> "btn btn-danger",:style=>"float:right") %>
+        
  </div> 
 </div>
 
 <div class="jombotron container">
-  <%=paginate @candidates %>
+  <%= paginate @candidates %>
     <% @candidates.each do |candidate| %>
-      
-
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -40,13 +38,13 @@
 
 
   <% if current_voter.id == 1%>
-        <button type="button" class="btn btn-danger">
-        <%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </button>
+       
+        <%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } , :class=> "btn btn-danger",:style=>"float:right" %>
+
 <%end%>
       
        <% if current_voter.candidate == nil %>
-          <button type="button" class="btn btn-success" style="float:right">  <%= link_to 'Vote' ,  vote_candidate_path(candidate.id) %> </td> </button>
+          <button type="button" class="btn btn-success" style="float:left">  <%= link_to 'Vote' ,  vote_candidate_path(candidate.id) %> </td> </button>
         <%end%>
 
 

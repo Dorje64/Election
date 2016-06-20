@@ -6,8 +6,10 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
+    
+    @page = params[:page]
 
-    @candidates = Candidate.order(:name)
+    @candidates = Candidate.page(@page)
     #@users = User.order(:name).page 3
    # @count = Voter.where(candidate_id => @can)
 
