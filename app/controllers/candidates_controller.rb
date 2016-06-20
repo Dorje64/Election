@@ -6,7 +6,9 @@ class CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.all
+
+    @candidates = Candidate.order(:name)
+    #@users = User.order(:name).page 3
    # @count = Voter.where(candidate_id => @can)
 
    @voter_all = Voter.all.count
@@ -91,6 +93,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :plan, :loaction)
+      params.require(:candidate).permit(:name, :plan, :loaction, :image)
     end
 end

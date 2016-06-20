@@ -3,8 +3,12 @@
 <div class="jombotron container-fluid row">
 <div class="col-md-4">
 <p>
+
+
+<%=image_tag(@candidate.image.url , :class => "img_responsive img-circle" , :style=> "width:160px;")%>
+<p>
 <div class="glyphicon glyphicon-user"></div>
-  <strong>Name:</strong>
+  <strong >Name:</strong>
   <%= @candidate.name %>
 </p>
 
@@ -12,9 +16,9 @@
   <strong>Plan:</strong>
   <%= @candidate.plan %>
 </p>
-
+	
 <p>
-  <strong>Loaction:</strong>
+  <strong>Location:</strong>
   <%= @candidate.loaction %>
 </p>
 </div>
@@ -37,7 +41,7 @@
 
     <div class="form-inline form-group field">
 
-        <%= f.text_area :content, :class=>"form-control fixed" ,cols: 80, rows:1,  :placeholder=>"Your comments" %>
+        <%= f.text_area :content, :class=>"form-control fixed" ,cols: 90, rows:1,  :placeholder=>"Your comments" %>
         <%= f.hidden_field :candidate_id ,value: @candidate.id %>
 
         <%= f.hidden_field :voter_id, value: current_voter.id%>
@@ -54,12 +58,14 @@
    <div class="panel panel-primary">
   <div class="panel-body">
   <%- @email = Voter.find(comment.voter_id).email%>
-        <b><%= @email %></b>
+        <b><%= @email %> :</b>
+        	<span style="width:auto">
+  	<%= time_ago_in_words(comment.created_at)%> ago</span>
+
   </div>
   <div class="panel-footer">
   	<p class=""><%= comment.content %> </p> 
-  	<span style="float:right ">
-  	<%= time_ago_in_words(comment.created_at)%> ago</span>
+  
 
   </div>
 </div>
@@ -74,5 +80,7 @@
 
 </div>
 
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+
 <%= link_to 'Back', candidates_path %>
+<%#= link_to 'Edit', edit_candidate_path(@candidate) %> 
+
