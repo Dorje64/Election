@@ -22,8 +22,9 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
+    @page= params[:page]
   @comment = Comment.new
-  @c = Comment.where('candidate_id' => @candidate.id)
+  @c = Comment.where('candidate_id' => @candidate.id).page(@page)
   end
 
 

@@ -1,3 +1,17 @@
+<div class="navbar navbar-default" style="background:#8258FA"> 
+  <ul class="col-md-2">
+        <li>Voter_ID : <%= current_voter.id %> </li>
+        <li> NAME : <%= current_voter.email %> </li>
+      </ul>
+
+<ul class="nav nav-pills col-md-2" style="float:right">      
+  <li role="presentation"><%= link_to 'Home', candidates_path , :class=> "btn btn-primary "%></li>
+  <li role="presentation">  <%=link_to("LOG OUT" , destroy_voter_session_path , :method => :delete , :class=> "btn btn-danger" ,:style=>"float:right") %></li>
+
+</ul>
+
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <div class="jombotron container-fluid row">
@@ -53,6 +67,8 @@
 
 
 <div class ="col-md-10">
+
+<%= paginate @c %>
 <% @c.each do |comment| %>
 
    <div class="panel panel-primary">

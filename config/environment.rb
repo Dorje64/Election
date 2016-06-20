@@ -10,11 +10,8 @@ ActionMailer::Base.smtp_settings = {
     :authentication => :login,
     :user_name      => "ku.dorjee@gmail.com",
     :password       => "mailtoasdf",
-    #:domain         => 'heroku.com',
     :enable_starttls_auto => true
 }
 
 ActionMailer::Base.delivery_method = :smtp
-#ActionMailer::Base.default_url_options = { host: 'kutudu.herokuapp.com' }
 ActionMailer::Base.default charset:"utf-8"
-#ActionMailer::Base.default_content_type = "text/html"

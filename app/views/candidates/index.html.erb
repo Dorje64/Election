@@ -1,19 +1,18 @@
 
+<div class="navbar navbar-default" , style="background:#8258FA"> 
+        <ul class="col-md-2">
+        <li>Voter_ID : <%= current_voter.id %> </li>
+        <li> NAME : <%= current_voter.email %> </li>
+      </ul>
+<ul class="nav nav-pills col-md-2" style="float:right">      
+  <li role="presentation" class="active"><%= link_to 'Home', candidates_path , :class=> "btn btn-primary "%></li>
+  <li role="presentation">  <%=link_to("LOG OUT" , destroy_voter_session_path , :method => :delete , :class=> "btn btn-danger" ,:style=>"float:right") %></li>
 
-<div class="navbar navbar-default"> 
-
- <div class="container">
-   
-
-        <%= current_voter.email %>
-      
-        <%=link_to("LOG Out" , destroy_voter_session_path , :method => :delete , :class=> "btn btn-danger",:style=>"float:right") %>
-        
- </div> 
-</div>
+</ul>
+       </div>
 
 <div class="jombotron container">
-  <%= paginate @candidates %>
+  <%= paginate @candidates%>
     <% @candidates.each do |candidate| %>
 
 <div class="panel panel-default">
